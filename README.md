@@ -2,14 +2,16 @@
 
 Sistema de visión artificial especializado en la detección de estructuras óseas y articulaciones en radiografías de mano y muñeca, utilizando la arquitectura **YOLO11**.
 
+El sistema está diseñado para procesar en tiempo real imágenes de placas radiográficas capturadas a través de una cámara web (ya sean placas físicas, o imágenes mostradas en monitores y dispositivos móviles).
+
 ## Clases detectadas
 El modelo identifica 6 categorías anatómicas:
 - **Articulaciones:** DIP, PIP, MCP.
 - **Huesos/Regiones:** Radius, Ulna, Wrist.
 
 ## Requisitos
-- **Python:** 3.10
-- **Hardware:** Cámara web para detección en tiempo real
+- **Python:** 3.10.
+- **Hardware:** Cámara web (Para la detección de las radiografías).
 
 ## Instalación
 
@@ -35,12 +37,12 @@ pip install -r requirements.txt
 ```
 
 ## Uso
-Para iniciar la detección en tiempo real, ejecuta:
-
+1. Ejecuta el script principal:
 ```bash
 python main.py
 ```
-Presiona 'q' para salir de la ventana de video.
+2. Coloca la radiografía (física o en pantalla) frente a la cámara para iniciar la detección.
+3. Presiona 'q' para salir de la ventana de video.
 
 ## Detalles técnicos
 * Modelo: YOLO11 Nano (yolo11n).
