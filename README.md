@@ -13,13 +13,13 @@ El modelo identifica 6 categorías anatómicas:
 
 ## Instalación
 
-### Opción 1: Con Conda (Recomendado para Mac M1/M2/M3/M4)
+### Opción 1: Con Conda
 ```bash
 conda env create -f environment.yml
 conda activate hand-xray-env
 ```
 
-### Opción 2: Con Pip (Windows/Linux/Mac Intel)
+### Opción 2: Con Pip
 Se recomienda el uso de un entorno virtual para mantener las dependencias aisladas.
 
 1. Crear el entorno virtual:
