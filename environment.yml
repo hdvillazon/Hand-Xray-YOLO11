@@ -1,14 +1,15 @@
 name: hand-xray-env
 channels:
   - pytorch-nightly
+  - pytorch
   - conda-forge
   - defaults
 dependencies:
   - python=3.10
   - pip
   - opencv
+  - pytorch
+  - torchvision
+  - torchaudio
   - pip:
       - ultralytics
-      - torch
-      - torchvision
-      - torchaudio

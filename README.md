@@ -1,42 +1,78 @@
 # Hand-Xray-YOLO11
 
-Sistema de visión artificial especializado en la detección de estructuras óseas y articulaciones en radiografías de mano y muñeca, utilizando la arquitectura **YOLO11**.
+Sistema de visión artificial especializado en la detección de estructuras óseas y articulaciones en radiografías de mano y muñeca, utilizando **YOLO11**.
 
-El sistema está diseñado para procesar en tiempo real imágenes de placas radiográficas capturadas a través de una cámara web (ya sean placas físicas, o imágenes mostradas en monitores y dispositivos móviles).
+El sistema está diseñado para procesar en tiempo real radiografías físicas o digitales mediante captura directa de cámara.
 
 ## Clases detectadas
-El modelo identifica 6 categorías anatómicas:
-- **Articulaciones:** DIP, PIP, MCP.
-- **Huesos/Regiones:** Radius, Ulna, Wrist.
+El modelo está entrenado para identificar las siguientes estructuras:
 
-## Requisitos
-- **Python:** 3.10.
-- **Hardware:** Cámara web (Para la detección de las radiografías).
+| ID |Clase | Descripción |
+| :--- | :--- | :--- |
+| 0 | DIP | Articulación Interfalángica Distal |
+| 1 | MCP | Articulación Metacarpofalángica |
+| 2 | PIP | Articulación Interfalángica Proximal |
+| 3 | Radius | Radio |
+| 4 | Ulna | Cúbito |
+| 5 | Wrist | Muñeca |
+
+## Requisitos del sistema
+* **Python:** 3.10.x.
+* **Hardware:** Cámara web.
 
 ## Instalación
 
-### Opción 1: Con Conda
+### 1. Configuración del entorno
+#### **Opción A: Virtualenv (venv)**
+
+**1. Crear el entorno:**
+
 ```bash
-conda env create -f environment.yml
-conda activate hand-xray-env
+python3.10 -m venv venv
 ```
 
-### Opción 2: Con Pip
-Se recomienda el uso de un entorno virtual para mantener las dependencias aisladas.
+**2. Activar el entorno:**
 
-1. Crear el entorno virtual:
+| Sistema operativo | Comando de activación |
+| :--- | :-- |
+| Windows (PowerShell) | `.\venv\Scripts\Activate.ps1` |
+| Windows (CMD) | `venv\Scripts\activate.bat` |
+| Mac / Linux | `source venv/bin/activate`|
+
+#### **Opción B: Conda (Recomendado)**
+
+**1. Crear el entorno:**
 ```bash
-python -m venv venv
-```
-2. Activar el entorno:
-* En Windows: `venv\Scripts\activate`
-* En Mac/Linux: `source venv/bin/activate`
-3. Instalar dependencias:
-```bash
-pip install -r requirements.txt
+conda create -n hand-xray python=3.10 -y
 ```
 
-## Uso
+**2. Activar el entorno:**
+```bash
+conda activate hand-xray
+```
+
+### 2. Instalación de dependencias
+#### **Apple Silicon (Chips M1, M2, M3, M4)**
+
+Requiere Pytorch Nightly para soporte total de la GPU (MPS):
+```bash
+pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+pip install ultralytics opencv-python
+```
+
+#### **NVIDIA GPU (CUDA)**
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install ultralytics opencv-python
+```
+
+#### **Solo CPU**
+```bash
+pip install torch torchvision torchaudio
+pip install ultralytics opencv-python
+```
+
+## Ejecución
 1. Ejecuta el script principal:
 ```bash
 python main.py
