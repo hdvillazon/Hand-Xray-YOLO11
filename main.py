@@ -46,7 +46,7 @@ def main():
 
         # Inferencia optimizada
         # stream=True ayuda con la memoria, device asegura el hardware correcto    
-        results = model(frame, device=device, stream=True, verbose=False)
+        results = model(frame, device=device, stream=True, verbose=False, conf=0.5)
         
         # Process the results
         for result in results:
